@@ -1,26 +1,11 @@
-// Updata dependencies
+import React from 'react';
 
-import React, { Component } from 'react';
-
-class Gif extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = { clicked: false };
-  }
-
-  handleClick = () => {
-    this.setState({ clicked: !this.state.clicked });
-  }
-
-  render() {
-    return (
-      <div className={this.state.clicked ? "selected-gif" : "gif"}
-        onClick={this.handleClick}>
-        <img src={this.props.link} />
-      </div>
-    );
-  }
-}
+const Gif = (props) => {
+  const { gifId } = props;
+  const src = `https://media0.giphy.com/media/${gifId}/200.gif`;
+  return (
+    <img src={src} alt="" className="gif" />
+  );
+};
 
 export default Gif;

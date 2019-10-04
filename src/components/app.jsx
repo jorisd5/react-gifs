@@ -1,27 +1,46 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 
-import '../assets/stylesheets/application.scss';
-import './components/gif';
+import Gif from './gif';
+import GifList from './gif_list';
+import SearchBar from './search_bar';
 
 class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state.link = "https://media0.giphy.com/media/i8gGF1Di6BXws/200.gif";
+    this.state = {
+      gifs: [
+        { id: "93QAXoBCMmCU8" },
+        { id: "xT9IgDEI1iZyb2wqo8" }
+      ],
+      selectedGifId: "93QAXoBCMmCU8"
+    };
+
+    // this.search("homer thinking");
   }
 
-const root = document.getElementById('root');
-if (root) {
-  ReactDOM.render(
-    <div className="left-scene">
 
-      <Gif src={this.state.link} />
-    </div>
-    <div className="right-scene">
+  render() {
+    // const gifs = [
+    //   { id: "93QAXoBCMmCU8" },
+    //   { id: "xT9IgDEI1iZyb2wqo8" }
+    // ];
 
-    </div>
-  );
+    const { selectedGifId } = this.state;
+    return (
+      <div>
+        <div className="left-scene">
+          <SearchBar searchFunction="homer" />
+          <div className="selected-gif">
+            <Gif gifId={this.state.selectedGifId} />
+          </div>
+        </div>
+        <div className="right-scene">
+          <GifList gifs={this.state.gifs} />
+        </div>
+      </div>
+    );
+  }
 }
 
-}
+export default App;
