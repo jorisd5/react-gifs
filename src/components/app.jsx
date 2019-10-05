@@ -26,7 +26,6 @@ class App extends Component {
     //   { id: "xT9IgDEI1iZyb2wqo8" }
     // ];
 
-    const { selectedGifId } = this.state;
     return (
       <div>
         <div className="left-scene">
