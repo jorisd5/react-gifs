@@ -1,20 +1,19 @@
 import React, { Component } from 'react';
 
 class Gif extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = { clicked: false };
-  }
-
   handleClick = () => {
-    this.setState({ clicked: !this.state.clicked })
+    const stateFunction = this.props;
+    if (stateFunction) {
+      const gifId = this.props;
+      stateFunction(gifId);
+    }
   }
 
   render() {
-    const src = `https://media0.giphy.com/media/${this.props.gifId}/200.gif`;
+    const gifId = this.props;
+    const src = `https://media0.giphy.com/media/${gifId}/200.gif`;
     return (
-      <img src={src} alt="" className={this.state.clicked ? "gif clicked" : "gif"} onClick={this.handleClick} />
+      <img src={src} alt="" onClick={this.handleClick} onKeyDown={this.handleClick} />
     );
   }
 
